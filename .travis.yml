@@ -10,6 +10,7 @@ before_script:
   - npm i -g firebase-tools
 
 script:
+  - npm rebuild node-sass --force
   - npm run build
 
 after_success:
