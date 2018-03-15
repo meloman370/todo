@@ -13,6 +13,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DraggableComponent } from './component/draggable/draggable.component';
 import { SecondComponent } from './pages/second/second.component';
 import { AnimComponent } from './component/anim/anim.component';
+import { AngularFireModule } from 'angularfire2';
+import {firebaseConfig} from '../environments/firebase.config';
+import {AngularFireDatabaseModule} from "angularfire2/database";
+import {AngularFireAuthModule} from "angularfire2/auth";
 
 
 @NgModule({
@@ -31,6 +35,9 @@ import { AnimComponent } from './component/anim/anim.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

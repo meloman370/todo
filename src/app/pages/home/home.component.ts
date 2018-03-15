@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {TodoService} from '../../service/todo.service';
 import {Subscription} from 'rxjs/Subscription';
 import {FormControl, Validators} from '@angular/forms';
+import {AngularFireDatabase} from "angularfire2/database";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-home',
@@ -13,14 +15,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   todos;
   title;
   todoChange: Subscription;
+  items;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.title = new FormControl('', Validators.required);
     this.todoChange = this.todoService.change().subscribe(() => {
       this.todos = this.todoService.getTodos();
       console.log(this.todos);
+    });
+
+    this.db.list('/items').valueChanges().subscribe(data => {
+      console.log(data);
+      this.items = data;
     });
   }
 

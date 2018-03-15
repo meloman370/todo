@@ -12,7 +12,7 @@ before_script:
 script:
   - npm rebuild node-sass --force
   - npm run build
-
+n
 after_success:
   - firebase deploy --token $TOKEN --non-interactive
 
