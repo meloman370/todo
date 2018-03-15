@@ -1,0 +1,16 @@
+<div class="container">
+    <form>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Title" [formControl]="title" >
+        </mat-form-field>
+        <button mat-button (click)="addTodo()">add</button>
+    </form>
+
+    <app-draggable (_onEnd)="onChangeDraggable($event)">
+        <div *ngFor="let todo of todos">
+            <app-todo-item [idTodo]="todo.id" [titleTodo]="todo.title"></app-todo-item>
+        </div>
+    </app-draggable>
+</div>
+
+<app-anim></app-anim>
