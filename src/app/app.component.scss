@@ -5,3 +5,30 @@ button {
 .content {
   padding: 10px;
 }
+
+.flex {
+  display: flex;
+  height: 100%;
+}
+
+mat-card {
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+
+  button {
+    background-color: #d4d7da;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: calc( 50% - 50px );
+  left: calc( 50% - 50px );
+}

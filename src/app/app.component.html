@@ -1,8 +1,31 @@
-<mat-toolbar>
-    <span>My Application</span>
-    <button mat-button routerLink="">home</button>
-    <button mat-button routerLink="second">second</button>
-</mat-toolbar>
-<div class="content">
-    <router-outlet></router-outlet>
+<mat-spinner *ngIf="showSpinner"></mat-spinner>
+
+<div *ngIf="!showSpinner">
+    <div *ngIf="isLogin">
+        <mat-toolbar>
+            <span>My Application</span>
+            <button mat-button routerLink="">home</button>
+            <button mat-button routerLink="second">second</button>
+        </mat-toolbar>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <div class="flex">
+        <mat-card *ngIf="!isLogin">
+            <mat-card-title>Вход</mat-card-title>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput placeholder="Email" [(ngModel)]="email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" [(ngModel)]="password">
+                </mat-form-field>
+                <button mat-button (click)="signUp()">Зарегистрироваться</button>
+                <button mat-button (click)="signIn()">Войти</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
+
